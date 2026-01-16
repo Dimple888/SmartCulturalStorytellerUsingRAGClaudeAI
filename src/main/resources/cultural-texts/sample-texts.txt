@@ -1,0 +1,17 @@
+Cultural texts can vary widely, but here are some sample entries that could be included in the `sample-texts.txt` file. These entries are fictional and meant to represent different cultural narratives.
+
+---
+
+Once upon a time in a distant land, a brave warrior named Kael set out on a quest to find the lost city of Eldoria, rumored to hold the secrets of ancient magic. Along his journey, he encountered mystical creatures and forged alliances with unexpected friends.
+
+In the heart of the bustling market of Aeloria, merchants shouted their wares, and the air was filled with the scent of exotic spices. Among the crowd, a young girl named Mira dreamed of adventure beyond the city walls, longing to explore the world and discover her true destiny.
+
+Under the shimmering stars of the Celestial Night, the villagers gathered around a fire to share stories of their ancestors. They spoke of the Great Flood that once swept through their lands and the hero who saved them by building a mighty ark, ensuring the survival of their people.
+
+In the tranquil village of Yurei, the art of calligraphy was revered. Each stroke of the brush told a story, and the villagers believed that the spirits of their ancestors guided their hands, preserving their history through the beauty of written words.
+
+As the seasons changed, the Festival of Lights approached, a time when families reunited to celebrate love and gratitude. Lanterns adorned the streets, illuminating the night with vibrant colors, while laughter and music filled the air, echoing the joy of togetherness.
+
+---
+
+This content can be saved in the specified file.

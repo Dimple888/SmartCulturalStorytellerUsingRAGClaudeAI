@@ -1,0 +1,187 @@
+{
+  "storyMetadata": {
+    "title": "Sundarakanda - The Book of the Beautiful",
+    "source": "Ramayana",
+    "author": "Valmiki",
+    "language": "Sanskrit (English Translation)",
+    "description": "The fifth book of the Ramayana featuring Hanuman's journey to Lanka"
+  },
+  "storyChunks": [
+    {
+      "id": "sk_001",
+      "verse": "Hanuman stood upon Mount Mahendra, his eyes fixed upon the vast ocean.",
+      "meaning": "Hanuman prepares to undertake an impossible journey across the ocean to find Sita, demonstrating unwavering determination.",
+      "emotion": "Veeram",
+      "characters": "Hanuman, Mount Mahendra",
+      "sceneIntent": "Preparation and determination",
+      "location": "Mount Mahendra",
+      "keywordsTags": ["journey", "beginning", "courage"]
+    },
+    {
+      "id": "sk_002",
+      "verse": "With a mighty roar, Hanuman leaped skyward, his form expanding with divine power.",
+      "meaning": "Hanuman transforms himself and begins his great leap across the ocean, embodying courage and devotion to Rama.",
+      "emotion": "Veeram",
+      "characters": "Hanuman, Ocean",
+      "sceneIntent": "The great leap",
+      "location": "The Vast Ocean",
+      "keywordsTags": ["leap", "power", "divine"]
+    },
+    {
+      "id": "sk_003",
+      "verse": "The demons of the sky challenged him, but Hanuman's heart remained fixed on Rama.",
+      "meaning": "Despite obstacles and challenges, Hanuman's unwavering devotion to Rama keeps him focused on his sacred mission.",
+      "emotion": "Karuna",
+      "characters": "Hanuman, Demons, Rama",
+      "sceneIntent": "Devotion amid adversity",
+      "location": "The celestial sky",
+      "keywordsTags": ["obstacle", "devotion", "challenge"]
+    },
+    {
+      "id": "sk_004",
+      "verse": "At last, Lanka appeared before him, a city of gold and wonder.",
+      "meaning": "Hanuman arrives at Lanka after his perilous journey, witnessing the magnificence and grandeur of Ravana's kingdom.",
+      "emotion": "Adbhuta",
+      "characters": "Hanuman, Lanka",
+      "sceneIntent": "Arrival and discovery",
+      "location": "Lanka, the golden city",
+      "keywordsTags": ["arrival", "wonder", "beauty"]
+    },
+    {
+      "id": "sk_005",
+      "verse": "In the Ashoka garden, Hanuman found Sita, sorrow etched upon her face but spirit unbroken.",
+      "meaning": "Hanuman discovers Sita in captivity, finding her courage and unwavering devotion to Rama still intact despite her suffering.",
+      "emotion": "Karuna",
+      "characters": "Hanuman, Sita, Ravana",
+      "sceneIntent": "Reunion and compassion",
+      "location": "Ashoka Vana garden",
+      "keywordsTags": ["reunion", "compassion", "sorrow"]
+    },
+    {
+      "id": "sk_006",
+      "verse": "Hanuman revealed himself and spoke of Rama's love, offering her Rama's signet ring.",
+      "meaning": "Hanuman confirms to Sita that Rama has not forgotten her and that her rescue is imminent, restoring her hope.",
+      "emotion": "Shringar",
+      "characters": "Hanuman, Sita, Rama",
+      "sceneIntent": "Hope and connection",
+      "location": "Ashoka Vana garden",
+      "keywordsTags": ["love", "hope", "promise"]
+    },
+    {
+      "id": "sk_007",
+      "verse": "With renewed determination, Hanuman wreaked havoc in Lanka's gardens and palaces.",
+      "meaning": "Hanuman demonstrates his power and the might of Rama's forces to Ravana, proving that the demon king is not invincible.",
+      "emotion": "Raudra",
+      "characters": "Hanuman, Ravana, Demons",
+      "sceneIntent": "Defiance and power",
+      "location": "Lanka's palace grounds",
+      "keywordsTags": ["power", "defiance", "strength"]
+    },
+    {
+      "id": "sk_008",
+      "verse": "Hanuman returned to Rama with news of Sita, his journey complete, his mission fulfilled.",
+      "meaning": "Hanuman successfully completes his perilous mission and returns with crucial news that brings joy to Rama and his forces.",
+      "emotion": "Hasya",
+      "characters": "Hanuman, Rama",
+      "sceneIntent": "Victory and fulfillment",
+      "location": "Rama's camp",
+      "keywordsTags": ["victory", "completion", "joy"]
+    }
+  ],
+  "emotionalMapping": {
+    "Veeram": {
+      "name": "Heroism",
+      "description": "Courage, valor, and strength",
+      "color": "#FF6B35",
+      "characteristics": ["bold", "determined", "fearless"]
+    },
+    "Shringar": {
+      "name": "Love",
+      "description": "Romance, affection, and attraction",
+      "color": "#FF69B4",
+      "characteristics": ["tender", "romantic", "affectionate"]
+    },
+    "Karuna": {
+      "name": "Compassion",
+      "description": "Sadness, empathy, and sorrow",
+      "color": "#4169E1",
+      "characteristics": ["empathetic", "sad", "sympathetic"]
+    },
+    "Bhaya": {
+      "name": "Fear",
+      "description": "Dread, apprehension, and terror",
+      "color": "#8B0000",
+      "characteristics": ["anxious", "terrified", "frightened"]
+    },
+    "Hasya": {
+      "name": "Joy",
+      "description": "Laughter, humor, and delight",
+      "color": "#FFD700",
+      "characteristics": ["happy", "joyful", "delighted"]
+    },
+    "Adbhuta": {
+      "name": "Wonder",
+      "description": "Amazement, fascination, and awe",
+      "color": "#87CEEB",
+      "characteristics": ["amazed", "fascinated", "awed"]
+    },
+    "Raudra": {
+      "name": "Anger",
+      "description": "Rage, fury, and indignation",
+      "color": "#DC143C",
+      "characteristics": ["angry", "furious", "enraged"]
+    },
+    "Bibhatsa": {
+      "name": "Disgust",
+      "description": "Revulsion and contempt",
+      "color": "#556B2F",
+      "characteristics": ["disgusted", "contemptuous", "repulsed"]
+    }
+  },
+  "characters": {
+    "Hanuman": {
+      "description": "The devoted follower of Rama, symbol of courage and devotion",
+      "role": "Protagonist",
+      "appearance": "Monkey deity with divine powers",
+      "traits": ["devoted", "courageous", "intelligent", "loyal"]
+    },
+    "Sita": {
+      "description": "Wife of Rama, embodiment of virtue and devotion",
+      "role": "Captive awaiting rescue",
+      "appearance": "Graceful woman of divine origin",
+      "traits": ["virtuous", "devoted", "steadfast", "noble"]
+    },
+    "Rama": {
+      "description": "The divine prince and protagonist of the Ramayana",
+      "role": "Object of devotion and love",
+      "appearance": "Noble prince with divine radiance",
+      "traits": ["righteous", "noble", "powerful", "virtuous"]
+    },
+    "Ravana": {
+      "description": "The demon king and antagonist",
+      "role": "Antagonist",
+      "appearance": "Demon with ten heads",
+      "traits": ["powerful", "arrogant", "lustful", "destructive"]
+    }
+  },
+  "animeStyleGuideLines": {
+    "recommendedStyle": "Devotional anime with cinematic quality",
+    "colorPalette": {
+      "primary": "#FFD700",
+      "secondary": "#FF6B35",
+      "accent": "#4169E1",
+      "background": "#87CEEB"
+    },
+    "visualElements": {
+      "character_design": "Traditional Hindu mythology with anime aesthetic",
+      "background_style": "Detailed, atmospheric landscapes",
+      "action_style": "Dynamic, fluid movements showcasing divine powers",
+      "emotion_visualization": "Subtle auras and visual effects representing emotional states"
+    }
+  },
+  "promptTemplates": {
+    "imagePromptTemplate": "An anime-style scene depicting {emotion} emotion, featuring {characters} in {location}. Style: {style}. Cinematic quality, detailed backgrounds, ethereal lighting.",
+    "audioNarrationTemplate": "Narrate this scene in a clear, engaging voice suitable for anime dubbing: {scene}. Emotional tone: {emotion}. Duration: 30-60 seconds.",
+    "sceneBreakdownTemplate": "Break down this story section into 5-8 distinct visual scenes, each with narration, emotion, image prompt, and audio text."
+  }
+}

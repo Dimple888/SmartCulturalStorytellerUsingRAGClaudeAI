@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cultural Storyteller - Anime Story Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎬 Smart Cultural Storyteller</h1>
+                <p>Generate Anime Stories with RAG, Claude AI & Text-to-Speech</p>
+                <div class="status-bar">
+                    <span id="status" class="status-indicator disconnected">● Disconnected</span>
+                    <button class="btn-secondary" onclick="checkHealth()">Check Status</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('story-generation')">📖 Story Generation</button>
+            <button class="tab-btn" onclick="switchTab('rag-search')">🔍 RAG Search</button>
+            <button class="tab-btn" onclick="switchTab('tts-synthesis')">🎙️ TTS/Audio</button>
+            <button class="tab-btn" onclick="switchTab('anime-scene')">🎨 Anime Scene</button>
+            <button class="tab-btn" onclick="switchTab('emotion-character')">🎭 Emotions & Characters</button>
+            <button class="tab-btn" onclick="switchTab('vector-store')">📊 Vector Store</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+
+            <!-- Tab 1: Story Generation -->
+            <div id="story-generation" class="tab-content active">
+                <div class="card">
+                    <h2>📖 Generate Cultural Story</h2>
+                    <p>Create anime narratives from Sundarakanda using RAG + Claude AI</p>
+                    
+                    <div class="form-group">
+                        <label>Story Name</label>
+                        <input type="text" id="storyName" placeholder="e.g., Hanuman's Heroic Journey" value="Sundarakanda - The Leap of Faith">
+                    </div>
+
+                    <div class="form-group">
+                        <label>User Query</label>
+                        <textarea id="userQuery" placeholder="e.g., Tell me the story of Hanuman's journey to Lanka with all emotions" rows="4">Tell me the complete story of Hanuman's journey to Lanka with all emotions and details</textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Anime Style</label>
+                            <select id="style">
+                                <option value="anime">Anime</option>
+                                <option value="manga">Manga</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="epic">Epic</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Max Scenes</label>
+                            <input type="number" id="maxScenes" value="5" min="1" max="10">
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="generateStory()">
+                        <span class="spinner" id="story-spinner"></span> Generate Story
+                    </button>
+
+                    <div id="story-result" class="result-box"></div>
+                </div>
+            </div>
+
+            <!-- Tab 2: RAG Search -->
+            <div id="rag-search" class="tab-content">
+                <div class="card">
+                    <h2>🔍 RAG Vector Store Search</h2>
+                    <p>Search Sundarakanda context using semantic similarity</p>
+                    
+                    <div class="form-group">
+                        <label>Search Query</label>
+                        <input type="text" id="ragQuery" placeholder="e.g., Hanuman's courage across the ocean" value="Hanuman's leap across the ocean">
+                    </div>
+
+                    <button class="btn-primary" onclick="searchRAG()">
+                        <span class="spinner" id="rag-spinner"></span> Search Vector Store
+                    </button>
+
+                    <div id="rag-result" class="result-box"></div>
+                </div>
+
+                <div class="card">
+                    <h2>📚 Retrieve Cultural Text</h2>
+                    <button class="btn-secondary" onclick="retrieveCulturalText()">Get Full Sundarakanda Text</button>
+                    <div id="cultural-result" class="result-box"></div>
+                </div>
+            </div>
+
+            <!-- Tab 3: TTS Synthesis -->
+            <div id="tts-synthesis" class="tab-content">
+                <div class="card">
+                    <h2>🎙️ Text-to-Speech Synthesis (OpenAI TTS)</h2>
+                    <p>Convert story narration to audio using OpenAI's high-quality voices (Nova, Alloy, Echo, Fable, Onyx, Shimmer).</p>
+                    
+                    <div class="form-group">
+                        <label>Narration Text</label>
+                        <textarea id="ttsText" placeholder="Text to synthesize" rows="4">Hanuman stood upon Mount Mahendra, his heart burning with courage and determination. With a mighty roar, he leaped skyward across the endless ocean.</textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Voice</label>
+                            <select id="ttsVoice">
+                                <option value="nova">Nova (warm, clear, fast)</option>
+                                <option value="alloy">Alloy (balanced, neutral)</option>
+                                <option value="echo">Echo (expressive, dynamic)</option>
+                                <option value="fable">Fable (storytelling)</option>
+                                <option value="onyx">Onyx (deep, male)</option>
+                                <option value="shimmer">Shimmer (high, female)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Language</label>
+                            <select id="ttsLanguage">
+                                <option value="EN">English</option>
+                                <option value="HI">Hindi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="synthesizeTTS()">
+                        <span class="spinner" id="tts-spinner"></span> Synthesize Audio
+                    </button>
+
+                    <div id="tts-result" class="result-box"></div>
+
+                    <div id="tts-audio-player" style="margin-top: 1em;">
+                      <audio id="ttsAudio" controls>
+                        <source src="/hanuman-tts-output.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎵 View Available Voices</h2>
+                    <button class="btn-secondary" onclick="getTTSVoices()">Get OpenAI TTS Voices & Recommendations</button>
+                    <div id="voices-result" class="result-box"></div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Anime Scene Generation -->
+            <div id="anime-scene" class="tab-content">
+                <div class="card">
+                    <h2>🎨 Anime Scene with Audio</h2>
+                    <p>Generate anime scene descriptions with synchronized narration</p>
+                    
+                    <div class="form-group">
+                        <label>Scene Description</label>
+                        <textarea id="sceneDescription" placeholder="Visual scene details" rows="3">Hanuman on mountain cliff, heroic pose, ocean waves below, sunset sky, glowing aura, dramatic lighting, cinematic composition</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Emotion (Rasa)</label>
+                        <select id="sceneEmotion">
+                            <option value="Veeram">Veeram - Heroism</option>
+                            <option value="Adbhuta">Adbhuta - Wonder</option>
+                            <option value="Karuna">Karuna - Compassion</option>
+                            <option value="Raudra">Raudra - Anger</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-primary" onclick="generateAnimeVideoAndPlay()">
+                        <span class="spinner" id="anime-spinner"></span> Generate Anime Video
+                    </button>
+
+                    <div id="anime-result" class="result-box"></div>
+
+                    <div id="anime-video-container" style="display:none;">
+                        <h3 style="margin-top:2em;">🎬 Anime Video</h3>
+                        <video width="640" height="360" controls>
+                          <source src="/hanuman-video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: Emotion & Character Filter -->
+            <div id="emotion-character" class="tab-content">
+                <div class="form-row">
+                    <div class="card" style="flex: 1;">
+                        <h2>🎭 Filter by Emotion (Rasa)</h2>
+                        
+                        <select id="emotionFilter">
+                            <option value="Veeram">Veeram - Heroism</option>
+                            <option value="Shringar">Shringar - Love/Romance</option>
+                            <option value="Karuna">Karuna - Compassion</option>
+                            <option value="Bhaya">Bhaya - Fear</option>
+                            <option value="Hasya">Hasya - Joy</option>
+                            <option value="Adbhuta">Adbhuta - Wonder</option>
+                            <option value="Raudra">Raudra - Anger</option>
+                            <option value="Bibhatsa">Bibhatsa - Disgust</option>
+                        </select>
+
+                        <button class="btn-primary" onclick="filterByEmotion()">
+                            <span class="spinner" id="emotion-spinner"></span> Get Scenes
+                        </button>
+
+                        <div id="emotion-result" class="result-box"></div>
+                    </div>
+
+                    <div class="card" style="flex: 1;">
+                        <h2>👤 Filter by Character</h2>
+                        
+                        <input type="text" id="characterFilter" placeholder="e.g., Hanuman, Sita, Rama" value="Hanuman">
+
+                        <button class="btn-primary" onclick="filterByCharacter()">
+                            <span class="spinner" id="character-spinner"></span> Get Scenes
+                        </button>
+
+                        <div id="character-result" class="result-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 6: Vector Store Management -->
+            <div id="vector-store" class="tab-content">
+                <div class="card">
+                    <h2>📊 Vector Store Management</h2>
+                    <p>Manage and monitor the RAG vector database</p>
+                    
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="loadSundarakanda()">
+                            <span class="spinner" id="load-spinner"></span> Load Sundarakanda into Vector Store
+                        </button>
+
+                        <button class="btn-secondary" onclick="getVectorStoreStats()">Get Vector Store Statistics</button>
+                    </div>
+
+                    <div id="vector-result" class="result-box"></div>
+                </div>
+
+                <div class="card">
+                    <h2>📈 System Information</h2>
+                    <button class="btn-secondary" onclick="getApiInfo()">Get API Information</button>
+                    <div id="info-result" class="result-box"></div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Smart Cultural Storyteller © 2026 | Powered by Spring AI, Claude Haiku & AWS Polly</p>
+            <p>Backend API: <span id="api-endpoint">http://localhost:8080/api/narrator</span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

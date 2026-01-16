@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cultural Storyteller - Feature Demo</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --bg: #0f172a;
+            --text: #f1f5f9;
+            --border: #475569;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #1a1f35 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .demo-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .demo-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .demo-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .feature-card p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .demo-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+        .feature-list {
+            list-style: none;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        .feature-list li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .section {
+            background: #1e293b;
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .tabs-demo {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-demo {
+            padding: 10px 15px;
+            background: #334155;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .tab-demo.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .comparison-table th {
+            background: #334155;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .comparison-table tr:hover {
+            background: #334155;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .status-ready {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        .status-preview {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        code {
+            background: #334155;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #a1f71a;
+            font-family: 'Courier New', monospace;
+        }
+        .endpoint {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            color: #a1f71a;
+        }
+        footer {
+            background: #1e293b;
+            border-top: 1px solid var(--border);
+            padding: 30px;
+            text-align: center;
+            color: #cbd5e1;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <div class="demo-header">
+            <h1>🎬 Smart Cultural Storyteller</h1>
+            <p>AI-Powered Anime Story Generation with RAG, Claude AI & Text-to-Speech</p>
+        </div>
+
+        <!-- Feature Overview -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3><span class="emoji">📖</span>Story Generation</h3>
+                <p>Create complete anime narratives from Sundarakanda using Claude AI and RAG retrieval</p>
+                <ul class="feature-list">
+                    <li>Custom story names</li>
+                    <li>RAG-enhanced prompts</li>
+                    <li>Multiple anime styles</li>
+                    <li>Scene count control</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><span class="emoji">🔍</span>RAG Search</h3>
+                <p>Semantic search across Sundarakanda vector store for contextual retrieval</p>
+                <ul class="feature-list">
+                    <li>Keyword search</li>
+                    <li>Semantic similarity</li>
+                    <li>Metadata filtering</li>
+                    <li>Full text retrieval</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><span class="emoji">🎙️</span>TTS Synthesis</h3>
+                <p>Convert narration to emotional speech with AWS Polly voice mapping</p>
+                <ul class="feature-list">
+                    <li>8 Indian Rasas</li>
+                    <li>English & Hindi</li>
+                    <li>Audio playback</li>
+                    <li>Voice recommendations</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><span class="emoji">🎨</span>Anime Scenes</h3>
+                <p>Generate anime scene descriptions with synchronized narration and audio</p>
+                <ul class="feature-list">
+                    <li>Visual description</li>
+                    <li>Audio sync</li>
+                    <li>Emotion mapping</li>
+                    <li>Image prompts</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><span class="emoji">🎭</span>Emotions & Characters</h3>
+                <p>Filter content by Rasa (emotional tone) or character focus</p>
+                <ul class="feature-list">
+                    <li>8 emotion filters</li>
+                    <li>Character search</li>
+                    <li>Metadata display</li>
+                    <li>Scene grouping</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><span class="emoji">📊</span>Vector Store</h3>
+                <p>Manage and monitor the RAG knowledge base</p>
+                <ul class="feature-list">
+                    <li>Load Sundarakanda</li>
+                    <li>View statistics</li>
+                    <li>Chunk management</li>
+                    <li>System info</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Technical Architecture -->
+        <div class="section">
+            <h2>🏗️ Technical Architecture</h2>
+            
+            <h3 style="color: var(--primary); margin-top: 20px;">Frontend Stack</h3>
+            <ul class="feature-list" style="margin-left: 20px;">
+                <li><strong>HTML5</strong> - Semantic markup and accessibility</li>
+                <li><strong>CSS3</strong> - Modern styling with responsive grid layout</li>
+                <li><strong>Vanilla JavaScript</strong> - No dependencies, lightweight API integration</li>
+                <li><strong>Fetch API</strong> - Modern async HTTP requests</li>
+            </ul>
+
+            <h3 style="color: var(--primary); margin-top: 20px;">Backend Stack</h3>
+            <ul class="feature-list" style="margin-left: 20px;">
+                <li><strong>Spring Boot 3.2</strong> - REST API framework</li>
+                <li><strong>Spring AI 1.0-M1</strong> - LLM integration with Claude Haiku</li>
+                <li><strong>H2 Database</strong> - In-memory cultural text storage</li>
+                <li><strong>Custom Vector Store</strong> - In-memory RAG implementation</li>
+                <li><strong>AWS Polly (ready)</strong> - Text-to-speech synthesis</li>
+            </ul>
+
+            <h3 style="color: var(--primary); margin-top: 20px;">Data Flow</h3>
+            <div class="endpoint">
+User Input → Form Validation → REST API Call → 
+Backend Processing (RAG + Claude AI) → JSON Response → 
+UI Rendering with Audio/Metadata
+            </div>
+        </div>
+
+        <!-- Tab Navigation Overview -->
+        <div class="section">
+            <h2>📑 Tab Navigation</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">
+                The UI is organized into 6 main tabs, each serving a specific use case. 
+                Each tab is independent and can be accessed via keyboard shortcuts (Alt+1 through Alt+6).
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tab</th>
+                        <th>Purpose</th>
+                        <th>Key Feature</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>📖 Story Generation</strong></td>
+                        <td>Create full narratives with Claude AI</td>
+                        <td>RAG-enhanced story generation</td>
+                        <td><span class="status-badge status-ready">✓ Ready</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔍 RAG Search</strong></td>
+                        <td>Semantic search across knowledge base</td>
+                        <td>Vector similarity matching</td>
+                        <td><span class="status-badge status-ready">✓ Ready</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎙️ TTS/Audio</strong></td>
+                        <td>Text-to-speech with emotion mapping</td>
+                        <td>8 Rasas × 2 languages</td>
+                        <td><span class="status-badge status-ready">✓ Ready</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎨 Anime Scene</strong></td>
+                        <td>Scene generation with audio</td>
+                        <td>Synchronized narration</td>
+                        <td><span class="status-badge status-ready">✓ Ready</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎭 Emotions/Characters</strong></td>
+                        <td>Filter by emotional tone or character</td>
+                        <td>Multi-dimensional filtering</td>
+                        <td><span class="status-badge status-ready">✓ Ready</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>📊 Vector Store</strong></td>
+                        <td>Knowledge base management</td>
+                        <td>Chunk loading and statistics</td>
+                        <td><span class="status-badge status-ready">✓ Ready</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="section">
+            <h2>🔌 API Endpoints</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">All endpoints follow RESTful conventions and return JSON responses.</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Story Management</h3>
+            <div class="endpoint">POST /api/narrator/generate-story</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Generate complete stories with scenes and narration</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">RAG Retrieval</h3>
+            <div class="endpoint">GET /api/narrator/search-rag?query=query_text</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Search vector store with semantic similarity</p>
+
+            <div class="endpoint">GET /api/narrator/cultural-text</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Retrieve full Sundarakanda text</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">TTS Synthesis</h3>
+            <div class="endpoint">POST /api/narrator/tts/synthesize</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Synthesize text to speech with emotion mapping</p>
+
+            <div class="endpoint">GET /api/narrator/tts/voices</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Get supported voice configurations</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Content Filtering</h3>
+            <div class="endpoint">GET /api/narrator/emotion/{emotion}</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Filter chunks by Rasa (emotional tone)</p>
+
+            <div class="endpoint">GET /api/narrator/character/{character}</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Filter scenes by character name</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Vector Store Management</h3>
+            <div class="endpoint">POST /api/narrator/load-sundarakanda</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Load Sundarakanda text into vector store</p>
+
+            <div class="endpoint">GET /api/narrator/vector-store-stats</div>
+            <p style="color: #cbd5e1; margin: 10px 0;">Get vector store statistics</p>
+        </div>
+
+        <!-- Rasa (Emotion) Mapping -->
+        <div class="section">
+            <h2>🎭 The 8 Indian Rasas (Emotions)</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">
+                Our TTS system maps each emotion to specific voice characteristics for authentic narration.
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Rasa</th>
+                        <th>Emotion</th>
+                        <th>English Voice</th>
+                        <th>Hindi Voice</th>
+                        <th>Characteristics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Veeram</strong></td>
+                        <td>Heroism</td>
+                        <td>Joanna</td>
+                        <td>Aditi</td>
+                        <td>Bold, confident, powerful</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shringar</strong></td>
+                        <td>Love/Romance</td>
+                        <td>Emma</td>
+                        <td>Raveena</td>
+                        <td>Warm, tender, affectionate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Karuna</strong></td>
+                        <td>Compassion</td>
+                        <td>Amy</td>
+                        <td>Aditi</td>
+                        <td>Gentle, empathetic, soothing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bhaya</strong></td>
+                        <td>Fear</td>
+                        <td>Brian</td>
+                        <td>Kalpana</td>
+                        <td>Anxious, worried, tense</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hasya</strong></td>
+                        <td>Joy</td>
+                        <td>Ivy</td>
+                        <td>Raveena</td>
+                        <td>Happy, cheerful, uplifting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adbhuta</strong></td>
+                        <td>Wonder</td>
+                        <td>Salli</td>
+                        <td>Aditi</td>
+                        <td>Amazed, surprised, in awe</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Raudra</strong></td>
+                        <td>Anger</td>
+                        <td>Matthew</td>
+                        <td>Kalpana</td>
+                        <td>Intense, aggressive, forceful</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bibhatsa</strong></td>
+                        <td>Disgust</td>
+                        <td>Russell</td>
+                        <td>Kalpana</td>
+                        <td>Repulsive, contemptuous, vile</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="section">
+            <h2>🚀 Getting Started</h2>
+            <h3 style="color: var(--primary); margin: 20px 0;">Step 1: Start the Application</h3>
+            <div class="endpoint">mvn clean spring-boot:run</div>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Step 2: Open the Web Interface</h3>
+            <div class="endpoint">http://localhost:8080/</div>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Step 3: Verify Connection</h3>
+            <p style="color: #cbd5e1; margin: 10px 0;">Click "Check Status" button in header - should show "● Connected"</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Step 4: Load Sample Data</h3>
+            <p style="color: #cbd5e1; margin: 10px 0;">Go to 📊 Vector Store tab and click "Load Sundarakanda"</p>
+
+            <h3 style="color: var(--primary); margin: 20px 0;">Step 5: Try a Feature</h3>
+            <p style="color: #cbd5e1; margin: 10px 0;">Go to any tab and click the main action button to test</p>
+
+            <div style="background: #334155; padding: 20px; border-radius: 6px; margin-top: 20px;">
+                <p style="color: #10b981; font-weight: 600;">✓ Demo mode is enabled by default</p>
+                <p style="color: #cbd5e1; margin-top: 10px;">The application works without API keys for testing. For production with real Claude AI, set <code>ANTHROPIC_API_KEY</code> environment variable.</p>
+            </div>
+        </div>
+
+        <!-- Features Checklist -->
+        <div class="section">
+            <h2>✅ Feature Checklist</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Core Features</h4>
+                    <ul class="feature-list">
+                        <li>Web-based UI dashboard</li>
+                        <li>6 integrated tabs</li>
+                        <li>Real-time status indicator</li>
+                        <li>Health check endpoint</li>
+                        <li>Error handling & alerts</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Story Features</h4>
+                    <ul class="feature-list">
+                        <li>Story generation with Claude AI</li>
+                        <li>RAG-enhanced prompts</li>
+                        <li>Multiple anime styles</li>
+                        <li>Scene count configuration</li>
+                        <li>Custom story naming</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Search & Filtering</h4>
+                    <ul class="feature-list">
+                        <li>Vector similarity search</li>
+                        <li>Emotion-based filtering</li>
+                        <li>Character filtering</li>
+                        <li>Semantic retrieval</li>
+                        <li>Full text access</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary); margin-bottom: 10px;">Audio & Visualization</h4>
+                    <ul class="feature-list">
+                        <li>TTS with 8 Rasas</li>
+                        <li>Bilingual support (EN/HI)</li>
+                        <li>Audio playback player</li>
+                        <li>Anime scene generation</li>
+                        <li>Voice recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Production Ready -->
+        <div class="section">
+            <h2>🏭 Production Ready</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">
+                The Smart Cultural Storyteller is production-ready with:
+            </p>
+            <ul class="feature-list" style="margin-left: 20px;">
+                <li><strong>Responsive Design</strong> - Works on desktop, tablet, and mobile</li>
+                <li><strong>Error Handling</strong> - Graceful degradation with fallback responses</li>
+                <li><strong>CORS Configuration</strong> - Secure cross-origin requests</li>
+                <li><strong>Accessibility</strong> - Semantic HTML and ARIA labels</li>
+                <li><strong>Performance</strong> - Optimized CSS animations and lazy loading</li>
+                <li><strong>Security</strong> - Environment variable-based API keys</li>
+                <li><strong>Documentation</strong> - Comprehensive guides and API docs</li>
+                <li><strong>Testing</strong> - Demo mode for testing without real API keys</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>Smart Cultural Storyteller</strong> © 2026</p>
+            <p>Powered by Spring Boot, Spring AI, Claude Haiku, and AWS Polly</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">
+                📚 <a href="UI_DOCUMENTATION.md" style="color: var(--primary); text-decoration: none;">UI Documentation</a> | 
+                🚀 <a href="QUICK_START_UI.md" style="color: var(--primary); text-decoration: none;">Quick Start Guide</a> | 
+                📖 <a href="ARCHITECTURE.md" style="color: var(--primary); text-decoration: none;">Architecture</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "title": "The Tale of Hanuman",
+    "content": "Hanuman leapt across the ocean to reach Lanka, demonstrating immense strength and devotion.",
+    "emotion": "Veeram",
+    "characters": "Hanuman",
+    "sceneIntent": "Heroic leap",
+    "location": "Ocean"
+  },
+  {
+    "id": "2",
+    "title": "The Wisdom of Tenali Raman",
+    "content": "Tenali Raman solved the king's riddle with wit, saving the villagers from an unfair tax.",
+    "emotion": "Hasya",
+    "characters": "Tenali Raman, King",
+    "sceneIntent": "Clever solution",
+    "location": "Royal Court"
+  },
+  {
+    "id": "3",
+    "title": "The Brave Princess",
+    "content": "A princess disguised herself as a soldier to defend her kingdom from invaders.",
+    "emotion": "Veeram",
+    "characters": "Princess",
+    "sceneIntent": "Disguise and defense",
+    "location": "Kingdom"
+  },
+  {
+    "id": "4",
+    "title": "The Clever Merchant",
+    "content": "A merchant outsmarted a group of bandits using clever tricks and negotiation.",
+    "emotion": "Hasya",
+    "characters": "Merchant, Bandits",
+    "sceneIntent": "Trickery and negotiation",
+    "location": "Marketplace"
+  },
+  {
+    "id": "5",
+    "title": "The Festival of Lights",
+    "content": "Villagers celebrated the return of their hero by lighting lamps and sharing sweets.",
+    "emotion": "Adbhuta",
+    "characters": "Villagers, Hero",
+    "sceneIntent": "Celebration",
+    "location": "Village"
+  }
+]
