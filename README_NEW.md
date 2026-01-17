@@ -1,6 +1,6 @@
 # Smart Cultural Storyteller - Spring Boot REST API
 
-A production-ready Spring Boot 3 application that generates cultural stories with anime-style scene narration using **Spring AI**, **Claude Haiku**, and **Retrieval Augmented Generation (RAG)**.
+A production-ready Spring Boot 3 application that generates cultural stories with anime-style scene narration using **Spring AI**, **Claude Haiku**, and **Retrieval Augmented Generation (RAG)**. 
 
 ## 🎯 Overview
 
